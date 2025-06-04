@@ -1,0 +1,227 @@
+@import url("https://fonts.googleapis.com/css2?family=Clicker+Script&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300&display=swap");
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #e3f0ff 0%, #a8e063 100%);
+  margin: 0;
+  padding: 0;
+  color: #222;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.medicine-bg {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.18;
+}
+
+.medicine-icon {
+  position: absolute;
+  animation: float 8s infinite linear;
+}
+
+.medicine-icon.pill { left: 10vw; top: 20vh; animation-delay: 0s; }
+.medicine-icon.cross { left: 70vw; top: 40vh; animation-delay: 2s; }
+.medicine-icon.pill2 { left: 40vw; top: 70vh; animation-delay: 4s; }
+.medicine-icon.cross2 { left: 80vw; top: 10vh; animation-delay: 6s; }
+
+@keyframes float {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-30px) scale(1.1); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+header, footer {
+  color: #fff;
+  padding: 1.5em 0;
+  text-align: center;
+  opacity: 1;
+  background: transparent;
+}
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.container h1{
+    font-family: 'Poppins', sans-serif;
+    color: rgba(118, 189, 247, 0.874);
+    font-size: 40px;
+    font-weight: 700;
+}
+.container p{
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #6b6b6b;
+    margin-top: -10px
+}
+/* Add this at the end of your CSS file for animated text effects */
+
+/* Fade-in and slide-up animation for questions and headings */
+.animated-text {
+  animation: fadeSlideIn 1s cubic-bezier(0.23, 1, 0.32, 1);
+  display: inline-block;
+}
+
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    letter-spacing: 0.2em;
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-8px) scale(1.05);
+    letter-spacing: 0.05em;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    letter-spacing: normal;
+  }
+}
+
+/* Optional: Rainbow color animation for special text */
+.rainbow-text {
+  background: linear-gradient(90deg, #2196f3, #4caf50, #ffb300, #ff5252, #2196f3);
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowMove 2.5s linear infinite;
+  display: inline-block;
+}
+
+@keyframes rainbowMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+main {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#start-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  z-index: 1;
+}
+
+.animated-btn {
+  background: linear-gradient(90deg, #4caf50, #2196f3);
+  color: #fff;
+  border: none;
+  padding: 1.2em 2.5em;
+  font-size: 1.5em;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(33, 150, 243, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: pulse 1.2s infinite;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.animated-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 32px rgba(33, 150, 243, 0.3);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(76, 175, 80, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+}
+
+#game-area {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s, transform 0.6s;
+  pointer-events: none;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(33,150,243,0.08);
+  padding: 2em;
+  margin-top: 2em;
+  min-width: 320px;
+  max-width: 500px;
+  z-index: 1;
+}
+
+#game-area.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  animation: bounceIn 0.8s;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.8) translateY(60px); opacity: 0; }
+  60% { transform: scale(1.05) translateY(-10px); opacity: 1; }
+  80% { transform: scale(0.97) translateY(5px);}
+  100% { transform: scale(1) translateY(0);}
+}
+
+#question-container {
+  margin-top: 1em;
+}
+
+.question {
+  font-size: 1.2em;
+  margin-bottom: 1em;
+  color: black;
+}
+
+.answers {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
+}
+
+.answer-btn {
+  background: #e3f2fd;
+  border: 2px solid #2196f3;
+  color: #222;
+  padding: 0.7em 1.2em;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.2s, color 0.2s;
+}
+
+.answer-btn:hover {
+  background: #2196f3;
+  color: #fff;
+}
+
+#score {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #388e3c;
+  margin-top: 1em;
+  min-height: 1.5em;
+}
+
+.confetti {
+  position: fixed;
+  top: 0;
+  width: 10px;
+  height: 18px;
+  border-radius: 3px;
+  opacity: 0.8;
+  z-index: 9999;
+  animation: confetti-fall 1.2s linear forwards;
+}
+@keyframes confetti-fall {
+  0% { transform: translateY(-20px) rotate(0deg);}
+  100% { transform: translateY(100vh) rotate(360deg);}
+}
